@@ -19,7 +19,7 @@ export default function Footer() {
   ];
   return (
     <>
-      <section>
+      <section className="bg-slate-300 py-[1rem] rounded-t">
         <div className="flex justify-center gap-[2rem] my-[1rem]">
           {rrss.map((rrss) => (
             <span key={rrss.name} className="w-10">
