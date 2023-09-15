@@ -3,12 +3,18 @@ import { useState } from 'react';
 import { Modal } from '@rewind-ui/core';
 import { Button } from '@rewind-ui/core';
 import Formulario from '../components/Formulario';
+import Message from './Message';
+import { useEffect } from 'react';
 function App() {
   const [open, setOpen] = useState(false);
+  //   Active the modal
+  useEffect(() => {
+    setOpen(true);
+  }, []);
   return (
     <>
       <Main>
-        <section className="h-screen p-10">
+        <section className="p-10">
           <Modal size="md" open={open} onClose={() => setOpen(false)}>
             <div className="flex justify-center flex-col p-[2rem]">
               <h2 className="text-2xl">
@@ -26,6 +32,29 @@ function App() {
             <Formulario />
           </section>
           <hr className="my-[1rem] border-2 border-gray" />
+          <section className="flex flex-col gap-5">
+            {/* For con todos los mensajes que vengan desde la base de datos */}
+            <Message
+              title="Anonimo"
+              message="Mi tio abuelo de 83 años me violo y se corrio en la cocina y ahora esta todo lleno de semen y no podemos hacer nada, esta mi tia llorando porque esta todo lleno de semen y mi padre esta cagando por todo la habitación de mi nieto."
+              color={true}
+            />
+            <Message
+              title="Anonimo"
+              message="Mi tio abuelo de 83 años me violo y se corrio en la cocina y ahora esta todo lleno de semen y no podemos hacer nada, esta mi tia llorando porque esta todo lleno de semen y mi padre esta cagando por todo la habitación de mi nieto."
+              color={false}
+            />
+            <Message
+              title="Anonimo"
+              message="Mi tio abuelo de 83 años me violo y se corrio en la cocina y ahora esta todo lleno de semen y no podemos hacer nada, esta mi tia llorando porque esta todo lleno de semen y mi padre esta cagando por todo la habitación de mi nieto."
+              color={false}
+            />
+            <Message
+              title="Anonimo"
+              message="Mi tio abuelo de 83 años me violo y se corrio en la cocina y ahora esta todo lleno de semen y no podemos hacer nada, esta mi tia llorando porque esta todo lleno de semen y mi padre esta cagando por todo la habitación de mi nieto."
+              color={false}
+            />
+          </section>
         </section>
       </Main>
     </>
