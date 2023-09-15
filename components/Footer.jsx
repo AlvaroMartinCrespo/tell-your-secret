@@ -26,7 +26,7 @@ export default function Footer() {
               <Popover>
                 <Popover.Trigger>
                   <button>
-                    <a href={rrss['link']}>
+                    <a href={rrss['link']} target="_blank" rel="noreferrer">
                       <img src={rrss['img']} alt={rrss['name']} />
                     </a>
                   </button>
