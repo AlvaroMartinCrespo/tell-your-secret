@@ -28,7 +28,7 @@ export default function Formulario() {
       });
     } catch (error) {
       console.error(error);
-      toast.error(error, {
+      toast.error('Error', {
         position: 'top-right',
         autoClose: 800,
         hideProgressBar: true,

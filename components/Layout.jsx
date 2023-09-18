@@ -15,11 +15,18 @@ function App() {
   useEffect(() => {
     const getSecrets = async () => {
       setLoading(true);
-      const { data, error } = await supabase.from('secrets').select('*');
+      // Hay que obtener los mensajes invertidos
+      const { data, error } = await supabase.from('secrets').select('*').order('created_at', { ascending: false });
       if (error) {
         console.error(error);
       }
-      setSecret(data);
+      console.log(data);
+      if (!data.length) {
+        setSecret('');
+      } else {
+        setSecret(data);
+      }
+
       setTimeout(() => {
         setLoading(false);
       }, 1500);
@@ -27,6 +34,7 @@ function App() {
 
     getSecrets();
   }, []);
+
   return (
     <>
       <Main>
@@ -52,9 +60,12 @@ function App() {
           <hr className="my-[1rem] border-2 border-gray" />
           <section className="flex flex-col gap-5 items-center">
             {loading ? (
-              <h2>Loading ...</h2>
+              <div className="h-screen">
+                <h2>Loading ...</h2>
+              </div>
             ) : secret ? (
               <>
+                {/* Hay que invertir el orden en el que se muestran los mensajes */}
                 {secret.map((secret) => {
                   return (
                     <Message key={secret.id} title="Anonimo" message={secret.secret} color={Math.random() < 0.5} />
@@ -63,29 +74,11 @@ function App() {
               </>
             ) : (
               <>
-                <h2>No hay secretos</h2>
+                <div className="h-screen">
+                  <h2>No hay secretos</h2>
+                </div>
               </>
             )}
-            {/* <Message
-              title="Anonimo"
-              message="Mi tio abuelo de 83 años me violo y se corrio en la cocina y ahora esta todo lleno de semen y no podemos hacer nada, esta mi tia llorando porque esta todo lleno de semen y mi padre esta cagando por todo la habitación de mi nieto."
-              color={true}
-            />
-            <Message
-              title="Anonimo"
-              message="Mi tio abuelo de 83 años me violo y se corrio en la cocina y ahora esta todo lleno de semen y no podemos hacer nada, esta mi tia llorando porque esta todo lleno de semen y mi padre esta cagando por todo la habitación de mi nieto."
-              color={false}
-            />
-            <Message
-              title="Anonimo"
-              message="Mi tio abuelo de 83 años me violo y se corrio en la cocina y ahora esta todo lleno de semen y no podemos hacer nada, esta mi tia llorando porque esta todo lleno de semen y mi padre esta cagando por todo la habitación de mi nieto."
-              color={false}
-            />
-            <Message
-              title="Anonimo"
-              message="Mi tio abuelo de 83 años me violo y se corrio en la cocina y ahora esta todo lleno de semen y no podemos hacer nada, esta mi tia llorando porque esta todo lleno de semen y mi padre esta cagando por todo la habitación de mi nieto."
-              color={false}
-            /> */}
           </section>
         </section>
       </Main>
