@@ -26,6 +26,7 @@ export default function Formulario() {
         progress: undefined,
         theme: 'dark',
       });
+      window.location.reload(false);
     } catch (error) {
       console.error(error);
       toast.error('Error', {

@@ -26,10 +26,7 @@ function App() {
       } else {
         setSecret(data);
       }
-
-      setTimeout(() => {
-        setLoading(false);
-      }, 1500);
+      setLoading(false);
     };
 
     getSecrets();
@@ -58,7 +55,7 @@ function App() {
             </div>
           </section>
           <hr className="my-[1rem] border-2 border-gray" />
-          <section className="flex flex-col gap-5 items-center">
+          <section className="flex flex-col gap-5 items-center h-screen">
             {loading ? (
               <div className="h-screen">
                 <h2>Loading ...</h2>

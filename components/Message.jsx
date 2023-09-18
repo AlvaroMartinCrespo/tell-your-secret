@@ -4,7 +4,9 @@ export default function Message({ title, message, color }) {
     <>
       <Card
         className={
-          color ? 'bg-blue-300 rounded-xl max-w-xl min-w-[25rem]' : 'bg-purple-300 rounded-xl max-w-xl min-w-[25rem]'
+          color
+            ? 'bg-blue-300 rounded-xl max-w-xl lg:min-w-[25rem] min-w-[20rem]'
+            : 'bg-purple-300 rounded-xl max-w-xl lg:min-w-[25rem] min-w-[20rem]'
         }
       >
         <Card.Header>{title}</Card.Header>
